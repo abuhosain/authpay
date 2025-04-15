@@ -15,7 +15,7 @@ app.use(cockieParser());
 app.use(cors({ origin: ["http://localhost:3000"], credentials: true }));
 
 // application routes
-app.use("/api", router);
+app.use("/", router);
 
 // Test route
 app.get("/", async (req: Request, res: Response) => {

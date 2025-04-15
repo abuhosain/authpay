@@ -5,7 +5,7 @@ export interface IUser {
   email: string;
   role: "admin" | "user";
   password : string;
-  userName: string;
+  username: string;
   isDeleted: boolean;
   isBlocked: boolean;
 }

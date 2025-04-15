@@ -22,7 +22,7 @@ const userSchema = new Schema<IUser>(
       enum: ["admin", "user"],
       default: "user",
     },
-    userName: {
+    username: {
       type: String,
       required: true,
     },
