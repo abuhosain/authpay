@@ -72,5 +72,13 @@ userSchema.post("save", function (doc, next) {
   next();
 });
 
+// Method to compare password during login
+userSchema.statics.isUserPasswordMatch = async function (
+    plainTextPassword: string,
+    hashedPassword: string,
+  ) {
+    return await bcrypt.compare(plainTextPassword, hashedPassword);
+  };
+
 // Export the user model
 export const User = model<IUser, UserModel>("User", userSchema);
