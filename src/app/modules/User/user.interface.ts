@@ -6,8 +6,14 @@ export interface IUser {
   role: "admin" | "user";
   password : string;
   username: string;
+  needsPasswordChange : boolean;
   isDeleted: boolean;
   isBlocked: boolean;
+}
+
+export interface ILoginUser {
+  email: string
+  password: string
 }
 
 export interface UserModel extends Model<IUser> {
