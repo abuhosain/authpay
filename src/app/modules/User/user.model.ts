@@ -1,6 +1,7 @@
 import { model, Schema } from "mongoose";
 import { IUser, UserModel } from "./user.interface";
-
+import bcrypt from 'bcrypt';
+import config from "../../config";
 const userSchema = new Schema<IUser>(
   {
     name: {
@@ -40,6 +41,25 @@ const userSchema = new Schema<IUser>(
   }
 );
 
+// Hash password before saving the user
+userSchema.pre('save', async function (next) {
+    const user = this;
+  
+    // Only hash the password if it has been modified (or is new)
+    if (!user.isModified('password')) {
+      return next();
+    }
+  
+    try {
+      user.password = await bcrypt.hash(user.password, Number(config.bcrypt_salt_rounds));
+      next();
+    } catch (error : any) {
+      return next(error);  
+    }
+  });
+  
+
+  
 
 // Export the user model
 export const User = model<IUser, UserModel>('User', userSchema);
