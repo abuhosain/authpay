@@ -1,6 +1,8 @@
 import express, { Application, Request, Response } from 'express'
 import cors from 'cors'
 import cockieParser from 'cookie-parser' 
+import globalErrorHandler from './app/middleware/globalErrorHandlers'
+import notFound from './app/middleware/notFound'
 
 const app: Application = express()
 
@@ -20,6 +22,10 @@ app.get('/', async (req: Request, res: Response) => {
 })
  
 
- 
+ // global error handler
+app.use(globalErrorHandler)
+
+// not found route
+app.use(notFound)
 
 export default app
