@@ -55,10 +55,16 @@ const loginUser = async (payload : ILoginUser) => {
     refreshToken,
     needsPasswordChange: user?.needsPasswordChange,
   }
-
 }
+
+
+const getUserWithAuth = async (email: string) => {
+    const user = await User.findOne({ email: email })
+    return user;
+  }
 
 export const UserServices = {
     signUpUserIntoDb,
-    loginUser
+    loginUser,
+    getUserWithAuth
 }

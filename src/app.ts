@@ -4,13 +4,14 @@ import cockieParser from "cookie-parser";
 import globalErrorHandler from "./app/middleware/globalErrorHandlers";
 import notFound from "./app/middleware/notFound";
 import router from "./app/routes";
+import passport from "../src/app/middleware/passport";
 
 const app: Application = express();
 
 // parser
 app.use(express.json());
 app.use(cockieParser());
-
+app.use(passport.initialize());
 // const allowedOrigins = [ "http://localhost:3000"]
 app.use(cors({ origin: ["http://localhost:3000"], credentials: true }));
 

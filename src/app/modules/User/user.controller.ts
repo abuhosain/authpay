@@ -30,7 +30,20 @@ const loginUser = catchAsync(async (req, res) => {
   });
 });
 
+
+const getUserWithAuth = catchAsync(async (req : any, res) => {
+    const email = req?.user?.email;
+    const result = await UserServices.getUserWithAuth(email);
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'User fetched Successfully',
+      data: result,
+    })
+  })
+
 export const UserControllers = {
   singupUser,
   loginUser,
+  getUserWithAuth
 };
