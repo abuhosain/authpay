@@ -58,8 +58,11 @@ userSchema.pre('save', async function (next) {
     }
   });
   
+// Method to find user by email
+userSchema.statics.isUserExistsByEmail = async function (email: string) {
+    return await this.findOne({ email }).select('+password');  
+  };
 
-  
 
 // Export the user model
 export const User = model<IUser, UserModel>('User', userSchema);
