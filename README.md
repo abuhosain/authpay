@@ -33,7 +33,7 @@ A secure authentication and payment processing API that provides user registrati
 ### 📦 Clone and Setup
 
 ```bash
-git clone https://github.com/yourusername/authpay.git
+git clone https://github.com/abuhosain/authpay.git
 cd authpay
 ```
 
@@ -181,12 +181,10 @@ Authorization: Bearer <JWT_TOKEN>
 {
   "success": true,
   "message": "Payment processed successfully",
-  "transaction": {
-    "id": "txn_id",
-    "userId": "2343434",
-    "price": 24324,
-    "status": "completed"
-  }
+  "data": {
+        "result": "true",
+        "payment_url": "https://sandbox.aamarpay.com/paynow.php?track=AAM1744805991271580"
+    }
 }
 ```
 
