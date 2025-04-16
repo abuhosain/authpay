@@ -15,6 +15,9 @@ app.use(passport.initialize());
 // const allowedOrigins = [ "http://localhost:3000"]
 app.use(cors({ origin: ["http://localhost:3000"], credentials: true }));
 
+
+app.set('view engine', 'ejs')
+
 // application routes
 app.use("/", router);
 

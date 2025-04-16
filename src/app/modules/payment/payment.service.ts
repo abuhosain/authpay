@@ -37,13 +37,11 @@ const confirmationService = async (txId: string, status: string) => {
       transactionId: verifyResponse?.mer_txnid || txId,
       amount: verifyResponse.amount,
       currency: "BDT",
-      paymentType: verifyResponse.payment_type,
+      paymentType: verifyResponse?.payment_type,
       payTime: verifyResponse.date,
       paymentStatus: verifyResponse.pay_status,
-    };
-    console.log("payment dat", paymentData);
-  }
-
+    }; 
+  } 
   // Render appropriate template based on status
   const templatePath =
     status === "success"

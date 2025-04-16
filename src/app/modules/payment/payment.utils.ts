@@ -25,7 +25,7 @@ export const initiatePayment = async (paymentData: any) => {
       cus_country: 'Bangladesh', 
       type: 'json',
     })
-    console.log('intial', response)
+    // console.log('intial', response)
     return response.data
   } catch (err) {
     throw new Error('Payment initiation fialed ')
