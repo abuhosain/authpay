@@ -114,4 +114,25 @@ describe("UserServices", () => {
       expect(createToken).toHaveBeenCalledTimes(2);
     });
   });
+
+  describe("getUserWithAuth", () => {
+    it("should return user when found by email", async () => {
+      (User.findOne as any).mockResolvedValue(mockUserPayload);
+  
+      const result = await UserServices.getUserWithAuth(mockUserPayload.email);
+  
+      expect(User.findOne).toHaveBeenCalledWith({ email: mockUserPayload.email });
+      expect(result).toEqual(mockUserPayload);
+    });
+  
+    it("should return null if user is not found", async () => {
+      (User.findOne as any).mockResolvedValue(null);
+  
+      const result = await UserServices.getUserWithAuth("nonexistent@example.com");
+  
+      expect(User.findOne).toHaveBeenCalledWith({ email: "nonexistent@example.com" });
+      expect(result).toBeNull();
+    });
+  });
+  
 });
