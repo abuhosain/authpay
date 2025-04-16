@@ -41,7 +41,7 @@ cd authpay
 
 ```bash
 npm install        # Install dependencies
-npm run dev        # Start development server
+npm run start:dev        # Start development server
 npm run build      # Build for production
 npm start          # Start production server
 ```
@@ -50,7 +50,7 @@ npm start          # Start production server
 
 ```bash
 yarn install       # Install dependencies
-yarn dev           # Start development server
+yarn start:dev           # Start development server
 yarn build         # Build for production
 yarn start         # Start production server
 ```
