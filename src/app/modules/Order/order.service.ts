@@ -17,13 +17,12 @@ const createOrder = async (user: JwtPayload, payload: Partial<IOrder>) => {
  
  
     // Generate a new transaction ID
-    const transactionId = `TXN-${Date.now()}`;
- 
+    const transactionId = `TXN-${Date.now()}`; 
     // Prepare the new order data
     const orderData: Partial<IOrder> = {
-        userId: payload.userId,
+        userId: user?._id || payload.userId,
         price: payload.price, 
-        transactionId: transactionId
+        transactionId: transactionId 
     };
  
     // Create the new order
