@@ -30,20 +30,32 @@ const loginUser = catchAsync(async (req, res) => {
   });
 });
 
+const getUserWithAuth = catchAsync(async (req: any, res) => {
+  const email = req?.user?.email;
+  const result = await UserServices.getUserWithAuth(email);
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "User fetched Successfully",
+    data: result,
+  });
+});
 
-const getUserWithAuth = catchAsync(async (req : any, res) => {
-    const email = req?.user?.email;
-    const result = await UserServices.getUserWithAuth(email);
-    sendResponse(res, {
-      statusCode: httpStatus.OK,
-      success: true,
-      message: 'User fetched Successfully',
-      data: result,
-    })
-  })
+const refreshToken = catchAsync(async (req, res) => {
+  const { refreshToken } = req.cookies;
+  const result = await UserServices.refreshToken(refreshToken);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Access token is retrieved succesfully!",
+    data: result,
+  });
+});
 
 export const UserControllers = {
   singupUser,
   loginUser,
-  getUserWithAuth
+  getUserWithAuth,
+  refreshToken
 };

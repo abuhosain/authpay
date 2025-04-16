@@ -25,4 +25,12 @@ router.get(
     UserControllers.getUserWithAuth,
   )
 
+  // refrsh token
+router.post(
+  '/refresh-token',
+  validateRequest(UserValidation.refreshTokenValidationSchema),
+  UserControllers.refreshToken,
+)
+
+
 export const UserRoutes = router;
