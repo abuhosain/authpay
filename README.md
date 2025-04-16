@@ -114,15 +114,14 @@ Logs in an existing user.
 
 ```json
 {
-  "success": true,
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-  "user": {
-    "id": "user_id",
-    "username": "abuhosain123",
-    "name": "Abu Hosain",
-    "email": "abuhosain@example.com",
-    "role": "user"
-  }
+   "statusCode": 200,
+    "success": true,
+    "message": "User is logged succesfully",
+    "data": {
+        "needsPasswordChange": true,
+        "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZmVjMTRlNjBjMDVlZj 2ZJLlU3rGL0pzfMCH9orFA",
+        "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZmVjMTRlNjBjMDVlZjhiNTQ2YTc0O -W_9ZXwuL-l4M"
+    }
 }
 ```
 
@@ -142,11 +141,21 @@ Authorization: Bearer <JWT_TOKEN>
 
 ```json
 {
-  "id": "user_id",
-  "username": "abuhosain123",
-  "name": "Abu Hosain",
-  "email": "abuhosain@example.com",
-  "role": "user"
+   "statusCode": 200,
+    "success": true,
+    "message": "User fetched Successfully",
+    "data": {
+        "needsPasswordChange": true,
+        "_id": "67fec14e60c05ef8b546a749",
+        "name": "Abu Hosain",
+        "email": "abuhosain@example.com",
+        "role": "user",
+        "username": "abuhosain123",
+        "isBlocked": false,
+        "isDeleted": false,
+        "createdAt": "2025-04-15T20:27:58.282Z",
+        "updatedAt": "2025-04-15T20:27:58.282Z"
+    }
 }
 ```
 
