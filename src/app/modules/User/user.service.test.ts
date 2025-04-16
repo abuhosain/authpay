@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import { User } from "./user.model";
 import { UserServices } from "./user.service";
 import AppError from "../../errors/AppError"; 
-import { createToken } from "./user.utils";
+import { createToken, verifyToken } from "./user.utils";
 
 // Mocks
 vi.mock("./user.model", () => ({
@@ -15,7 +15,7 @@ vi.mock("./user.model", () => ({
 }));
 
 vi.mock("./user.utils", () => ({
-  createToken: vi.fn(),
+  createToken: vi.fn(), 
 }));
 
 const mockUserPayload = {
@@ -134,5 +134,8 @@ describe("UserServices", () => {
       expect(result).toBeNull();
     });
   });
+
+  
+ 
   
 });
